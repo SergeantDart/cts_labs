@@ -20,12 +20,12 @@ public class BankAccount extends Account {
 		
 	}
 	@Override
-	public void withdraw(double amount) {
+	public void withdraw(double amount) throws InsufficientFundsException {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	public void transfer(double amount, Account destination) {
+	public void transfer(double amount, Account destination) throws IllegalTransferException, InsufficientFundsException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -39,6 +39,7 @@ public class BankAccount extends Account {
 	public void setBalance(double amount) {
 		this.balance = amount;
 	}
-		
+	
+	
 	
 }
