@@ -35,10 +35,18 @@ public class Main {
 			System.err.println(e.getMessage());
 		}
 		System.out.println("The current balance for first account is: " + ca1.getBalance());
-		System.out.println("The current balance for second account is: " + ca2.getBalance());
-
-
-	
+		System.out.println("The current balance for second account is: " + ca2.getBalance());		
+		
+		SavingsAccount sa = new SavingsAccount(300, "abcdabcdabcdabcdabcdabcd");
+		sa.deposit(300);
+		System.out.println("The current balance for the third account is: " + sa.getBalance());
+		sa.addInterest(10);
+		System.out.println("The current balance for the third account is: " + sa.getBalance());
+		
+		Bank b = new Bank();
+		BankAccount ba = b.openBankAccount(AccountType.CURRENT);
+		System.out.println("The current balance for the newly opened is: " + ba.getBalance());
+		
 		
 		
 	}
