@@ -18,16 +18,11 @@ public class SavingsAccount extends BankAccount implements Profitable {
 	}
 
 	@Override
-	public void deposit(double amount) {
-		// TODO Auto-generated method stub
-		this.balance += amount;
-	}
-
-	@Override
 	public void withdraw(double amount) throws InsufficientFundsException {
-		if(this.balance - amount > MIN_BALANCE)
+		if(this.balance - amount > MIN_BALANCE) {
 			this.balance -= amount;
-		else
-			throw new InsufficientFundsException("Below minimum balance limit");
+			notificationService.sendNotification("[WITHDRAW] The amount of " + amount + " was withdrawed from account no. " + this.getIban() + "!");
+		}else
+			throw new InsufficientFundsException("[WITHDRAW] Below minimum balance limit");
 	}
 }

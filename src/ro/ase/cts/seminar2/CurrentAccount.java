@@ -17,10 +17,10 @@ public class CurrentAccount extends BankAccount  {
 		if(this.balance - amount > 0 - MAX_CREDIT) {
 			this.balance -= amount;
 			if(this.notificationService != null) {
-				this.notificationService.sendNotification("The amount of " + amount + " was withdrawed from your account !");
+				this.notificationService.sendNotification("[WITHDRAW] The amount of " + amount + " was withdrawed from account no. " + this.getIban() + "!");
 			}
 		}else
-			throw new InsufficientFundsException("Exceeds credit limit");
+			throw new InsufficientFundsException("[WITHDRAW] Exceeds credit limit");
 	}
 	
 	

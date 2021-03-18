@@ -26,14 +26,14 @@ public class BankAccount extends Account implements Depositable, Withdrawable, T
 	public void deposit(double amount) {
 		// TODO Auto-generated method stub
 		this.balance += amount;
-		notificationService.sendNotification("[DEPOSIT] The amount of " + amount + " was deposited to account no. " + this.iban + "!");
+		notificationService.sendNotification("[DEPOSIT] The amount of " + amount + " was deposited to account no. " + this.getIban() + "!");
 	}
 	
 	@Override
 	public void withdraw(double amount) throws InsufficientFundsException {
 		if(this.balance - amount > 0) {
 			this.balance -= amount;
-			notificationService.sendNotification("[WITHDRAW] The amount of " + amount + " was withdrawed from account no. " + this.iban + "!");
+			notificationService.sendNotification("[WITHDRAW] The amount of " + amount + " was withdrawed from account no. " + this.getIban() + "!");
 		}else
 			throw new InsufficientFundsException("[WITHDRAW] Exceeds credit limit");	
 	}
@@ -44,10 +44,7 @@ public class BankAccount extends Account implements Depositable, Withdrawable, T
 			throw new IllegalTransferException("[TRANSFER] Illegal transfer !");
 		}else {
 			this.withdraw(amount);
-			notificationService.sendNotification("[TRANSFER] The amount of " + amount + " was deposited to account no. " + this.iban + "!");
 			((BankAccount)destination).deposit(amount);
-			notificationService.sendNotification("[TRANSFER] The amount of " + amount + " was withdrawed from account no. " + destination.iban + "!");
-
 		}
 	}
 	
@@ -60,5 +57,11 @@ public class BankAccount extends Account implements Depositable, Withdrawable, T
 	public void setBalance(double amount) {
 		this.balance = amount;
 	}
+
+	@Override
+	public String getIban() {
+		return this.iban;
+	}
+	
 	
 }
