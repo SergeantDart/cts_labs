@@ -9,9 +9,10 @@ public class Bank {
 			return new CurrentAccount();
 		}else if(accountType == AccountType.SAVINGS) {
 			return new SavingsAccount();
+		}else if(accountType == AccountType.CREDIT) {
+			return new CreditAccount();
 		}else {
 			throw new UnsupportedOperationException();
 		}
 	}
-
 }

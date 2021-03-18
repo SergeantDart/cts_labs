@@ -47,8 +47,19 @@ public class Main {
 		BankAccount ba = b.openBankAccount(AccountType.CURRENT);
 		System.out.println("The current balance for the newly opened is: " + ba.getBalance());
 		
-		
-		
+		CreditAccount cra = (CreditAccount)b.openBankAccount(AccountType.CREDIT);
+		cra.setBalance(500);
+		System.out.println("The current balance before transfer for the credit acccount: " + cra.getBalance());
+		System.out.println("The current balance before transfer for the current acccount: " + ca1.getBalance());
+
+		try {
+			cra.transfer(200, ca1);
+		} catch (IllegalTransferException | InsufficientFundsException e) {
+			e.printStackTrace();
+		}
+		System.out.println("The current balance after transfer for the credit acccount: " + cra.getBalance());
+		System.out.println("The current balance after transfer for the current acccount: " + ca1.getBalance());
+	
 	}
 	
 
