@@ -3,11 +3,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import ro.ase.cts.seminar5.Product;
+
 public class GenericCart {
 
 	private static Map<String, GenericCart> instances = null;
 	public String type;
-	private ArrayList<String> products;
+	private ArrayList<Product> products;
 	
 	private GenericCart() {
 		products = new ArrayList<>();
@@ -27,7 +29,11 @@ public class GenericCart {
 		return instances.get(type);
 	}
 	
-	public ArrayList<String> getProducts() {
+	public ArrayList<Product> getProducts() {
 		return products;
+	}
+	
+	public void addProduct(Product product) {
+		products.add(product);
 	}
 }

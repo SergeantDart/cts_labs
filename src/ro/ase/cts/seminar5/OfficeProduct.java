@@ -1,23 +1,21 @@
 package ro.ase.cts.seminar5;
 
-public class TechProduct implements Product {
+public class OfficeProduct implements Product {
 	
 	private String productName;
-	
-	private TechProduct() {
-	
+
+	private OfficeProduct() {
+		
 	}
 	
-	public TechProduct(String productName) {
+	public OfficeProduct(String productName) {
 		super();
 		this.productName = productName;
 	}
 	
 	@Override
 	public String getDescription() {
-		return "This is a TECH product !";
+		return "This is an office product !";
 	}
 	
-	
-
 }
