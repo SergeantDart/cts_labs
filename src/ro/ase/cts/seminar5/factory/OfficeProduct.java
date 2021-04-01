@@ -2,15 +2,16 @@ package ro.ase.cts.seminar5.factory;
 
 public class OfficeProduct implements Product {
 	
+	private int productId;
 	private String productName;
 
 	private OfficeProduct() {
 		
 	}
 	
-	public OfficeProduct(String productName) {
+	public OfficeProduct(int productId) {
 		super();
-		this.productName = productName;
+		this.productId = productId;
 	}
 	
 	@Override

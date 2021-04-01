@@ -3,8 +3,8 @@ package ro.ase.cts.seminar5.factory;
 public class OfficeProductFactory extends AbstractProductFactory {
 	
 	@Override
-	public Product makeProduct(String productName) {
-		return new OfficeProduct(productName);
+	public Product makeProduct(int productId) {
+		return new OfficeProduct(productId);
 	}
 
 	@Override

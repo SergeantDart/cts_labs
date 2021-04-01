@@ -1,23 +1,20 @@
-package ro.ase.cts.seminar5;
+package ro.ase.cts.seminar5.factory;
 
 import java.util.Scanner;
 
 import ro.ase.cts.seminar4.GenericCart;
-import ro.ase.cts.seminar5.factory.AbstractProductFactory;
-import ro.ase.cts.seminar5.factory.OfficeProduct;
-import ro.ase.cts.seminar5.factory.Product;
-import ro.ase.cts.seminar5.factory.TechProduct;
-import ro.ase.cts.seminar5.factory.TechProductFactory;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
+		int idCounter = 0;
+		
 		Scanner scanner = new Scanner(System.in);
 		
 		GenericCart myShoppingCart = GenericCart.getInstance("shoppingCart");
-		Product smartphone = new TechProduct("Samsung A20");
-		Product paperClip = new OfficeProduct("A4 toner ink");
+		Product smartphone = new TechProduct(++idCounter);
+		Product paperClip = new OfficeProduct(++idCounter);
 		
 		myShoppingCart.addProduct(smartphone);
 		myShoppingCart.addProduct(paperClip);
@@ -42,9 +39,12 @@ public class Main {
 			if(userPreference.equalsIgnoreCase("tech")) {
 				productFactory = new TechProductFactory();
 			}
-			myProduct = productFactory.makeProduct("generic");
-			
+			System.out.println(productFactory.getCatalog());			
 		}
+		
+		System.out.println("Choose a product of your preference...");
+		userPreference = scanner.next();
+		myProduct = productFactory.makeProduct(Integer.valueOf(userPreference));
 		
 		if(myProduct != null) {
 			myShoppingCart.addProduct(myProduct);
