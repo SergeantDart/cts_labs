@@ -1,5 +1,9 @@
 package ro.ase.cts.seminar5;
 
+import ro.ase.cts.seminar5.factory.OfficeProduct;
+import ro.ase.cts.seminar5.factory.Product;
+import ro.ase.cts.seminar5.factory.TechProduct;
+
 public class ProductFactory {
 	
 	public Product makeProduct(String type, String productName) {

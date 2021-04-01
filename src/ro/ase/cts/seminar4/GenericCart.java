@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import ro.ase.cts.seminar5.Product;
+import ro.ase.cts.seminar5.factory.Product;
 
 public class GenericCart {
 

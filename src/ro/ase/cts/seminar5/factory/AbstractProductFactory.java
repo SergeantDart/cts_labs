@@ -1,4 +1,4 @@
-package ro.ase.cts.seminar5;
+package ro.ase.cts.seminar5.factory;
 
 public abstract class AbstractProductFactory {
 	

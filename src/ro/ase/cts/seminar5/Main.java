@@ -3,12 +3,16 @@ package ro.ase.cts.seminar5;
 import java.util.Scanner;
 
 import ro.ase.cts.seminar4.GenericCart;
+import ro.ase.cts.seminar5.factory.AbstractProductFactory;
+import ro.ase.cts.seminar5.factory.OfficeProduct;
+import ro.ase.cts.seminar5.factory.Product;
+import ro.ase.cts.seminar5.factory.TechProduct;
+import ro.ase.cts.seminar5.factory.TechProductFactory;
 
 public class Main {
 
 	public static void main(String[] args) {
 		
-		//simple factory
 		Scanner scanner = new Scanner(System.in);
 		
 		GenericCart myShoppingCart = GenericCart.getInstance("shoppingCart");
@@ -33,20 +37,28 @@ public class Main {
 		String userPreference = scanner.nextLine();	
 		System.out.println();
 		
-		ProductFactory productFactory = new ProductFactory();
-		myProduct = productFactory.makeProduct(userPreference, "genericName");
+		AbstractProductFactory productFactory = null;
+		if(userPreference != null) {
+			if(userPreference.equalsIgnoreCase("tech")) {
+				productFactory = new TechProductFactory();
+			}
+			myProduct = productFactory.makeProduct("generic");
+			
+		}
 		
 		if(myProduct != null) {
 			myShoppingCart.addProduct(myProduct);
 		}
+
 		
 		for(Product p : myShoppingCart.getProducts()) {
 			System.out.println(p.getDescription());
 		}
 		
-		//factory
-		AbstractProductFactory techProductFactory = new TechProductFactory();
-
+		
+		
+		
+		scanner.close();
 	}
 
 }
