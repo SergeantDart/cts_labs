@@ -1,4 +1,4 @@
-package ro.ase.cts.seminar5.factory;
+package ro.ase.cts.seminar5;
 
 public class TechProduct implements Product {
 	
@@ -113,6 +113,10 @@ public class TechProduct implements Product {
 			
 		public TechProductBuilder setPrice(float price) {
 			product.price = price;
+			return this;
+		}
+		
+		public TechProductBuilder getProduct() {
 			return this;
 		}
 		

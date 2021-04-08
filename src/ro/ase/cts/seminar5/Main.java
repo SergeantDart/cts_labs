@@ -1,4 +1,4 @@
-package ro.ase.cts.seminar5.factory;
+package ro.ase.cts.seminar5;
 
 import java.util.Scanner;
 
@@ -38,6 +38,8 @@ public class Main {
 		if(userPreference != null) {
 			if(userPreference.equalsIgnoreCase("tech")) {
 				productFactory = new TechProductFactory();
+			}else {
+				//TODO
 			}
 			System.out.println(productFactory.getCatalog());			
 		}
@@ -54,9 +56,6 @@ public class Main {
 		for(Product p : myShoppingCart.getProducts()) {
 			System.out.println(p.getDescription());
 		}
-		
-		
-		
 		
 		scanner.close();
 	}

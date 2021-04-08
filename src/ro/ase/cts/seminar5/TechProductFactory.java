@@ -1,4 +1,4 @@
-package ro.ase.cts.seminar5.factory;
+package ro.ase.cts.seminar5;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -33,7 +33,7 @@ public class TechProductFactory extends AbstractProductFactory {
 	private ArrayList<String> readRecordsFromCsvFile(String fileName) {
 		ArrayList<String> productRecords = new ArrayList<>();
 		
-		File productsFile = new File("D:/Eclipse workspace/cts_labs/src/ro/ase/cts/seminar5/factory/" + fileName);
+		File productsFile = new File("D:/Eclipse workspace/cts_labs/src/ro/ase/cts/seminar5/" + fileName);
 		
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(productsFile));

@@ -1,4 +1,4 @@
-package ro.ase.cts.seminar5.factory;
+package ro.ase.cts.seminar5;
 
 public class OfficeProductFactory extends AbstractProductFactory {
 	
