@@ -15,6 +15,7 @@ public class YoutubeLibrary implements YoutubeLibraryInterface {
 		System.out.println("\nFetching videos from database...");
 		ArrayList<YoutubeVideo> videoList = videoDatabase.getVideoCollection();
 		StringBuilder videoListBuilder = new StringBuilder();
+		videoListBuilder.append("\n");
 		for(YoutubeVideo video : videoList) {
 			videoListBuilder.append(video.toString()).append("\n");
 		}
@@ -25,13 +26,13 @@ public class YoutubeLibrary implements YoutubeLibraryInterface {
 	public String listVideoInfo(int id) {
 		System.out.println("\nFetching video " + id + " from database...");
 		YoutubeVideo video = videoDatabase.getVideoById(id);
+		StringBuilder videoInfoBuilder = new StringBuilder();
+		videoInfoBuilder.append("\n");
 		if(video != null) {
-			return video.toString();
+			videoInfoBuilder.append(video.toString());
 		}else {
-			return "Not found...";
+			videoInfoBuilder.append("\nNot found...");
 		}
+		return videoInfoBuilder.toString();
 	}
-	
-	
-	
 }
