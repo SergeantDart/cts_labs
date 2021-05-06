@@ -3,7 +3,8 @@ package ro.ase.cts.seminar10.chain;
 public enum Verbosity {
 	INFO(1),
 	DEBUG(2),
-	ERROR(3);
+	ERROR(3),
+	FILE(4);
 	
 	public int verbosity;
 	
