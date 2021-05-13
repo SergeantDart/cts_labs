@@ -1,7 +1,7 @@
 package ro.ase.cts.command;
 
-public class TurnLightOnCommand implements CommandInterface {
-
+public class LightBulb {
+	
 	int lightIntensity = 0;
 	
 	public void turnOnLight() {
@@ -24,10 +24,5 @@ public class TurnLightOnCommand implements CommandInterface {
 	public void increaseLight() {
 		lightIntensity++;
 		System.out.println("Increasing light");
-	}
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		
 	}
 }
