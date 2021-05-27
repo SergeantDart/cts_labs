@@ -1,4 +1,4 @@
-package ro.ase.cts.seminar12.testing;
+package ro.ase.cts.seminar13.unitTesting;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,6 +11,11 @@ import org.junit.jupiter.api.Test;
 import ro.ase.cts.seminar13.unitTesting.Student;
 
 class StudentTestCase {
+	
+	Student student;
+	static final String defaultName = "anonim";
+	static final int defaultVarsta = 18;
+	static final int defaultNote[] = {};
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -25,6 +30,7 @@ class StudentTestCase {
 	@BeforeEach
 	void setUp() throws Exception {
 		System.out.println("setUp was called...");
+		student = new Student(defaultName, defaultVarsta, defaultNote);
 	}
 
 	@AfterEach
@@ -44,5 +50,22 @@ class StudentTestCase {
 		assertEquals(nume, student.getNume(), "Name not correctly assigned...");
 		assertEquals(varsta, student.getVarsta(), "Age not correctly assigned...");
 		assertEquals(note, student.getNote(), "Grades not correctly assigned...");
+	}
+	
+	@Test
+	void testStudentConstructorRightNotNull() {
+		int grades[] = {7, 8, 9};
+		Student student = null;
+		try {
+			student = new Student("Toni", 22, grades);
+		}catch(Exception e) {
+			fail("Constructor is not supposed to throw exceptions");
+		}
+		assertNotNull(student);
+	}
+	
+	@Test(expect = StudentExceptionWrongValue.class) 
+	void testStudentSetVarstaErrorCondition() {
+		student.setVarsta(-1);
 	}
 }
