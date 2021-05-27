@@ -34,8 +34,27 @@ public class Student {
 		this.varsta = varsta;
 	}
 
-	public void setNote(int[] note) {
+	public void setNote(int[] note) throws StudentExceptionWrongValue {
+		if(note != null) {
+			for(int i = 0; i < note.length; i++) {
+				if(note[i] <= 0 || note[i] > 10) {
+					throw new StudentExceptionWrongValue("Out of bounds value");
+				}
+			}
+		}
 		this.note = note;
+	}
+	
+	public float computeAverage() throws StudentExceptionWrongValue {
+		if(note == null) {
+			throw new StudentExceptionWrongValue("Only not null values accepted");
+		}
+		float avg = 0;
+		for(int i = 0; i < note.length; i++) {
+			avg += note[i];
+		}
+		avg = avg / note.length ;
+		return avg * 100 / 100.0f;
 	}
 	
 	

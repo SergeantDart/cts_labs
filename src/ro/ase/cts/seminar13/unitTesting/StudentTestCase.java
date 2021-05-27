@@ -7,16 +7,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import ro.ase.cts.seminar13.unitTesting.Student;
+import org.junit.jupiter.api.function.Executable;
 
 class StudentTestCase {
 	
-	Student student;
-	static final String defaultName = "anonim";
-	static final int defaultVarsta = 18;
-	static final int defaultNote[] = {};
-
+	static Student student;
+	static String defaultName = "anonim";
+	static int defaultVarsta = 18;
+	static int defaultNote[];
+	static int NR_NOTE_DEFAULT = 3;
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		System.out.println("beforeClass was called...");
@@ -30,6 +29,10 @@ class StudentTestCase {
 	@BeforeEach
 	void setUp() throws Exception {
 		System.out.println("setUp was called...");
+		defaultNote = new int[NR_NOTE_DEFAULT];
+		defaultNote[0] = 8;
+		defaultNote[1] = 9;
+		defaultNote[2] = 10;
 		student = new Student(defaultName, defaultVarsta, defaultNote);
 	}
 
@@ -64,8 +67,58 @@ class StudentTestCase {
 		assertNotNull(student);
 	}
 	
-	@Test(expect = StudentExceptionWrongValue.class) 
+	@Test 
 	void testStudentSetVarstaErrorCondition() {
-		student.setVarsta(-1);
+		assertThrows(StudentExceptionWrongValue.class, new Executable() {
+
+			@Override 
+			public void execute() throws Throwable {
+				student.setVarsta(-1);
+			}
+		});
+	}
+	
+	@Test
+	void testStudentGetVarstaRight() {
+		int expectedValue = defaultVarsta;
+		int actualValue = student.getVarsta();
+		assertEquals(expectedValue, actualValue);
+	}
+	
+	@Test
+	void testComputeAverageErrorCondition() {
+		try {
+			student.setNote(null);
+			assertThrows(StudentExceptionWrongValue.class, new Executable() {
+
+				@Override 
+				public void execute() throws Throwable {
+					student.computeAverage();
+				}
+			});
+		} catch (StudentExceptionWrongValue e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	@Test
+	void testCalculMedieRightTwoDecimals() throws StudentExceptionWrongValue {
+		float expectedValue = 9.00f;
+		float actualValue = student.computeAverage();
+		assertEquals(expectedValue, actualValue);
+	}
+	
+	@Test
+	void testSetNoteBoundaryCondition() {
+		int invalidNote[] = new int[3];
+		for(int i = 0; i < 2; i++) {
+			invalidNote[i] =  5 + i;
+		}
+		invalidNote[2] = 20;
+		assertThrows(StudentExceptionWrongValue.class, () -> {
+			student.setNote(invalidNote);
+		});
 	}
 }
