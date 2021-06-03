@@ -10,7 +10,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
-class StudentTestCase {
+class TestCaseStudent {
 	
 	static Student student;
 	static String defaultName = "anonim";
@@ -70,5 +70,5 @@ class StudentTestCase {
 				student.computeAverage();
 		});
 	}
-
+	
 }
