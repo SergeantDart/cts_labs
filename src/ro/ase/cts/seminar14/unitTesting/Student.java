@@ -1,4 +1,4 @@
-package ro.ase.cts.seminar13.unitTesting;
+package ro.ase.cts.seminar14.unitTesting;
 
 public class Student {
 	
@@ -49,11 +49,6 @@ public class Student {
 		if(note == null) {
 			throw new StudentExceptionWrongValue("Only not null values accepted");
 		}
-		
-		if(note.length <= 1) {
-			throw new StudentExceptionWrongValue("Not enough values to compute average");
-		}
-		
 		float avg = 0;
 		for(int i = 0; i < note.length; i++) {
 			avg += note[i];
